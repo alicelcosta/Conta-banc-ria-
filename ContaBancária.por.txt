@@ -1,0 +1,187 @@
+
+
+
+
+
+
+
+programa {
+  
+    real saldo = 150.00 // Float
+    inteiro contatos, senha
+    cadeia nome ="Alice"
+    
+
+  funcao inicio() {
+
+
+escreva("Olá, ", nome ,", é um prazer ter você por aqui!\n")
+escreva("\n")
+
+    inteiro opcao 
+    
+    escreva("Escolha uma opção:\n")
+    escreva("1. Ver Saldo\n") 
+    escreva("2. Ver Extrato\n") 
+    escreva("3. Fazer Saque\n")
+    escreva("4. Fazer Depósito\n")
+    escreva("5. Fazer Trasferência\n")
+    escreva("6. Sair\n")
+    leia(opcao)
+
+    escreva("A opção selecionada foi: ",opcao, "\n")
+
+    escolha (opcao){
+        
+    caso 1:
+        
+    verSaldo()
+    pare
+        
+    caso 2:
+           
+    Verextrato()
+    
+    pare
+        
+    caso 3:
+       
+    fazerSaque()
+    pare
+        
+
+    caso 4:
+
+       fazerDeposito()
+   
+    pare
+
+    caso 5:
+
+     Trasferencia()
+    pare
+
+    caso 6:
+
+    sair()
+    pare
+    
+    caso contrario:
+    
+    erro()
+    pare   }
+
+  }
+
+
+  funcao verSaldo(){
+
+      escreva("Digite sua senha:")
+      leia (senha)
+
+      escreva("Seu saldo atual é: ", saldo, "\n")
+      escreva("\n")
+      inicio()}
+  
+  funcao fazerDeposito() {
+    real deposito
+    
+    escreva("Qual o valor para depósito? ")
+    leia(deposito)
+
+    se (deposito <= 0)
+    {escreva("Operação não autorizada.\n")
+      fazerDeposito()
+    } senao {
+      saldo = saldo + deposito
+      verSaldo()}
+    
+  }
+  
+  funcao fazerSaque(){
+  
+    real saque
+  
+    escreva("Qual o valor para saque? ")
+    leia(saque)
+
+    escreva("Digite sua senha:")
+     leia (senha)
+  
+    se (saque <= 0){
+          escreva("Operação não autorizada.\n")
+          fazerSaque()
+
+    } senao se(saque <= saldo)
+      {saldo = saldo - saque
+      verSaldo()}
+ 
+      senao 
+
+      { escreva("Operação não autorizada.")
+      fazerSaque()}
+
+    }
+
+  
+funcao erro() {
+    escreva("Opção Inválida\n")
+    escreva("Por favor, informe um número entre 1 a 6.\n")
+    inicio()}
+ 
+
+
+funcao Trasferencia()
+
+{
+  real transferir
+  
+  escreva("Para qual contato deseja transferir?")
+  leia(contatos)
+
+   escreva("Qual valor da transferência?")
+   leia (transferir)
+
+   escreva("Digite sua senha:")
+     leia (senha)
+    
+
+    se (transferir <= 0){
+          escreva("Operação não autorizada.\n")
+          fazerSaque()}
+
+      senao se(transferir <= saldo)
+      {saldo = saldo - transferir
+
+      escreva("Tranferência concluída!\n")
+
+      verSaldo()}
+ 
+      senao 
+
+      { escreva("Operação não autorizada.")
+      fazerSaque()}
+
+
+} 
+
+funcao Verextrato(){
+  
+    escreva("Digite sua senha:")
+    leia (senha)
+
+  
+    escreva("Seu Extrato\n")
+    escreva("\n")
+escreva("Saldo inicial: R$ 150,00\n")
+escreva("Depósito: + R$ 50,00\n")
+escreva("Saque: - R$ 30,00\n")
+escreva("Saldo atual: R$ 170,00\n")}
+
+
+  funcao sair(){
+    escreva ("",nome,", foi um prazer ter você por aqui!")
+    escreva("Programa encerrado")}
+  }
+
+
